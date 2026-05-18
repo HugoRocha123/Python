@@ -1,1 +1,1 @@
-A simple code with the intention of creating a system taht can store vehicles information in a json.
+A simple code with the intention of creating a system that can store vehicles information in a json.
