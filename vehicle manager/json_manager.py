@@ -63,11 +63,9 @@ class GestorEstruturaJSON:
             
     def _garantir_arquivo_valido(self):
         path = Path(self.__file)
-
         if not path.exists() or path.stat().st_size == 0:
             self._abrir_arquivo()
             return
-
         try:
             with open(self.__file, "r", encoding="utf-8") as f:
                 conteudo = f.read().strip()
