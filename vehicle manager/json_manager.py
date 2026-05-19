@@ -4,10 +4,9 @@ import json
 
 
 class GestorEstruturaJSON:
-    def __init__(self, nome_arquivo: str):
+    def __init__(self, nome_arquivo):
         self.__file = nome_arquivo
-        if not Path(self.__file).exists():
-            self._abrir_arquivo()
+        self._garantir_arquivo_valido()
 
     def adicionar(self, chave, valor):
         data = self._ler_arquivo()
@@ -61,3 +60,20 @@ class GestorEstruturaJSON:
     def _abrir_arquivo(self):
         with open(self.__file, "w", encoding="utf-8") as file:
             json.dump([], file, indent=4, ensure_ascii=False)
+            
+    def _garantir_arquivo_valido(self):
+        path = Path(self.__file)
+
+        if not path.exists() or path.stat().st_size == 0:
+            self._abrir_arquivo()
+            return
+
+        try:
+            with open(self.__file, "r", encoding="utf-8") as f:
+                conteudo = f.read().strip()
+                if not conteudo:
+                    self._abrir_arquivo()
+                    return
+                json.loads(conteudo)
+        except (json.JSONDecodeError, Exception):
+            self._abrir_arquivo()
