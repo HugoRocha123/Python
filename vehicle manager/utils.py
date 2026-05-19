@@ -4,6 +4,6 @@ def ImprimirCor(texto, opcao):
     elif opcao == 2:
         print(f"\033[92m{texto}\033[00m")
     elif opcao == 3:
-        print(f"\033[31m{texto}\033[00m")
+        print(f"\033[91m{texto}\033[00m")
     else:
         print(texto)
