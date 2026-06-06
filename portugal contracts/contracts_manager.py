@@ -7,12 +7,17 @@ from pathlib import Path
 import datetime
 
 class GestorArquivo:
-    def __init__(self,documento : str):
+    def __init__(self, documento: str):
         data = datetime.datetime.now()
-        hoje = str(str(data.day)+"-"+str(data.month)+"-"+str(data.year))
-        self.__file= r"Trabalho distritos/"+documento+hoje+".json"
-        if not Path(self.__file).exists():
+        hoje = f"{data.day}-{data.month}-{data.year}"
+        self.__file = f"Trabalho distritos/{documento}{hoje}.json"
+
+        path = Path(self.__file)
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        if not path.exists():
             self.abrir_arquivo()
+
         self.garantir_arquivo_valido()
 
     def ler_arquivo(self):
@@ -27,10 +32,17 @@ class GestorArquivo:
             return []
 
     def abrir_arquivo(self):
-        with open(self.__file, "w", encoding="utf-8") as file:
-            json.dump([], file, indent=4, ensure_ascii=False)
+        path = Path(self.__file)
+        path.parent.mkdir(parents=True, exist_ok=True)
+
+        if not path.exists():
+            with open(self.__file, "w", encoding="utf-8") as file:
+                json.dump([], file, indent=4, ensure_ascii=False)
 
     def salvar_arquivo(self, data):
+        path = Path(self.__file)
+        path.parent.mkdir(parents=True, exist_ok=True)
+
         with open(self.__file, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4, ensure_ascii=False)
 
@@ -39,6 +51,7 @@ class GestorArquivo:
         if not path.exists() or path.stat().st_size == 0:
             self.abrir_arquivo()
             return
+
         try:
             with open(self.__file, "r", encoding="utf-8") as f:
                 conteudo = f.read().strip()
@@ -94,32 +107,36 @@ class GestorMunicipios:
         self.__arquivo.salvar_arquivo(data)
 
 class GestorContratos:
-    def __init__(self,district,municipality):
-        parametros={"district": district,
-                    "municipality": municipality}
-        self.__api = GestorURL("/v1/contracts",parametros)
-        self.__arquivo = GestorArquivo(f"contratos")
-        self.__contratos = self.__api.get_api()
+    def __init__(self, district, municipality):
+        parametros = {}
+        parametros["municipality"] = municipality
+        parametros["disctrict"] = district
+        self.__api = GestorURL("/v1/contracts", parametros)
 
-    def guardar_contratos(self):
-        data = self.__arquivo.ler_arquivo()
-        for contrato in self.__contratos.json()["data"]["contracts"]:
-            data.append({
+    def obter_contratos(self):
+        resposta = self.__api.get_api()
+        if resposta.status_code != 200:
+            return []
+
+        try:
+            dados = resposta.json()
+        except Exception as erro:
+            print("Erro ao converter JSON:", erro)
+            return []
+        contratos = dados.get("data", {}).get("contracts") or []
+
+        lista = []
+        for contrato in contratos:
+            lista.append({
                 "id": contrato.get("id"),
-                "contract_type": contrato.get("contract_type"),
-                "procedure_type": contrato.get("procedure_type"),
                 "object": contrato.get("object"),
-                "contracting_entity": contrato.get("contracting_entity"),
-                "suppliers": contrato.get("suppliers"),
-                "publication_date": contrato.get("publication_date"),
-                "signing_date": contrato.get("signing_date"),
                 "contract_price": contrato.get("contract_price"),
-                "execution_days": contrato.get("execution_days"),
+                "publication_date": contrato.get("publication_date"),
                 "district_code": contrato.get("district_code"),
-                "municipality_code": contrato.get("municipality_code"),
-                "year": contrato.get("year"),
+                "municipality_code": contrato.get("municipality_code")
             })
-        self.__arquivo.salvar_arquivo(data)
+
+        return lista
 
     #Recebe o parametro e vai returnar a lista dos municiopios do distrito inserido
 
@@ -146,8 +163,13 @@ if __name__ == '__main__':
     municipios = GestorMunicipios()
     municipios.guardar_codigos()
 
-    contratos = GestorContratos()
-    contratos.guardar_contratos()
+    contratos = GestorContratos(13,1106)
+    lista_contratos = contratos.obter_contratos()
+    for l in lista_contratos:
+        print(l)
+    #contratos.guardar_contratos()
+
+    
     #print(json.dumps(resposta.json(), indent=4))
     #for distrito in resposta.json()["data"]["districts"]:
         #print(distrito)
