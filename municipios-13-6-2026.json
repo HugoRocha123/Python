@@ -1,0 +1,1392 @@
+[
+    {
+        "name": "Abrantes",
+        "code": "1401",
+        "district_code": "14"
+    },
+    {
+        "name": "Águeda",
+        "code": "0101",
+        "district_code": "01"
+    },
+    {
+        "name": "Aguiar da Beira",
+        "code": "0901",
+        "district_code": "09"
+    },
+    {
+        "name": "Alandroal",
+        "code": "0701",
+        "district_code": "07"
+    },
+    {
+        "name": "Albergaria-a-Velha",
+        "code": "0102",
+        "district_code": "01"
+    },
+    {
+        "name": "Albufeira",
+        "code": "0801",
+        "district_code": "08"
+    },
+    {
+        "name": "Alcácer do Sal",
+        "code": "1501",
+        "district_code": "15"
+    },
+    {
+        "name": "Alcanena",
+        "code": "1402",
+        "district_code": "14"
+    },
+    {
+        "name": "Alcobaça",
+        "code": "1001",
+        "district_code": "10"
+    },
+    {
+        "name": "Alcochete",
+        "code": "1502",
+        "district_code": "15"
+    },
+    {
+        "name": "Alcoutim",
+        "code": "0802",
+        "district_code": "08"
+    },
+    {
+        "name": "Alenquer",
+        "code": "1101",
+        "district_code": "11"
+    },
+    {
+        "name": "Alfândega da Fé",
+        "code": "0401",
+        "district_code": "04"
+    },
+    {
+        "name": "Alijó",
+        "code": "1701",
+        "district_code": "17"
+    },
+    {
+        "name": "Aljezur",
+        "code": "0803",
+        "district_code": "08"
+    },
+    {
+        "name": "Aljustrel",
+        "code": "0201",
+        "district_code": "02"
+    },
+    {
+        "name": "Almada",
+        "code": "1503",
+        "district_code": "15"
+    },
+    {
+        "name": "Almeida",
+        "code": "0902",
+        "district_code": "09"
+    },
+    {
+        "name": "Almeirim",
+        "code": "1403",
+        "district_code": "14"
+    },
+    {
+        "name": "Almodôvar",
+        "code": "0202",
+        "district_code": "02"
+    },
+    {
+        "name": "Alpiarça",
+        "code": "1404",
+        "district_code": "14"
+    },
+    {
+        "name": "Alter do Chão",
+        "code": "1201",
+        "district_code": "12"
+    },
+    {
+        "name": "Alvaiázere",
+        "code": "1002",
+        "district_code": "10"
+    },
+    {
+        "name": "Alvito",
+        "code": "0203",
+        "district_code": "02"
+    },
+    {
+        "name": "Amadora",
+        "code": "1115",
+        "district_code": "11"
+    },
+    {
+        "name": "Amarante",
+        "code": "1301",
+        "district_code": "13"
+    },
+    {
+        "name": "Amares",
+        "code": "0301",
+        "district_code": "03"
+    },
+    {
+        "name": "Anadia",
+        "code": "0103",
+        "district_code": "01"
+    },
+    {
+        "name": "Ansião",
+        "code": "1003",
+        "district_code": "10"
+    },
+    {
+        "name": "Arcos de Valdevez",
+        "code": "1601",
+        "district_code": "16"
+    },
+    {
+        "name": "Arganil",
+        "code": "0601",
+        "district_code": "06"
+    },
+    {
+        "name": "Armamar",
+        "code": "1801",
+        "district_code": "18"
+    },
+    {
+        "name": "Arouca",
+        "code": "0104",
+        "district_code": "01"
+    },
+    {
+        "name": "Arraiolos",
+        "code": "0702",
+        "district_code": "07"
+    },
+    {
+        "name": "Arronches",
+        "code": "1202",
+        "district_code": "12"
+    },
+    {
+        "name": "Arruda dos Vinhos",
+        "code": "1102",
+        "district_code": "11"
+    },
+    {
+        "name": "Aveiro",
+        "code": "0105",
+        "district_code": "01"
+    },
+    {
+        "name": "Avis",
+        "code": "1203",
+        "district_code": "12"
+    },
+    {
+        "name": "Azambuja",
+        "code": "1103",
+        "district_code": "11"
+    },
+    {
+        "name": "Baião",
+        "code": "1302",
+        "district_code": "13"
+    },
+    {
+        "name": "Barcelos",
+        "code": "0302",
+        "district_code": "03"
+    },
+    {
+        "name": "Barrancos",
+        "code": "0204",
+        "district_code": "02"
+    },
+    {
+        "name": "Barreiro",
+        "code": "1504",
+        "district_code": "15"
+    },
+    {
+        "name": "Batalha",
+        "code": "1004",
+        "district_code": "10"
+    },
+    {
+        "name": "Beja",
+        "code": "0205",
+        "district_code": "02"
+    },
+    {
+        "name": "Belmonte",
+        "code": "0501",
+        "district_code": "05"
+    },
+    {
+        "name": "Benavente",
+        "code": "1405",
+        "district_code": "14"
+    },
+    {
+        "name": "Bombarral",
+        "code": "1005",
+        "district_code": "10"
+    },
+    {
+        "name": "Borba",
+        "code": "0703",
+        "district_code": "07"
+    },
+    {
+        "name": "Boticas",
+        "code": "1702",
+        "district_code": "17"
+    },
+    {
+        "name": "Braga",
+        "code": "0303",
+        "district_code": "03"
+    },
+    {
+        "name": "Bragança",
+        "code": "0402",
+        "district_code": "04"
+    },
+    {
+        "name": "Cabeceiras de Basto",
+        "code": "0304",
+        "district_code": "03"
+    },
+    {
+        "name": "Cadaval",
+        "code": "1104",
+        "district_code": "11"
+    },
+    {
+        "name": "Caldas da Rainha",
+        "code": "1006",
+        "district_code": "10"
+    },
+    {
+        "name": "Caminha",
+        "code": "1602",
+        "district_code": "16"
+    },
+    {
+        "name": "Campo Maior",
+        "code": "1204",
+        "district_code": "12"
+    },
+    {
+        "name": "Cantanhede",
+        "code": "0602",
+        "district_code": "06"
+    },
+    {
+        "name": "Carrazeda de Ansiães",
+        "code": "0403",
+        "district_code": "04"
+    },
+    {
+        "name": "Carregal do Sal",
+        "code": "1802",
+        "district_code": "18"
+    },
+    {
+        "name": "Cartaxo",
+        "code": "1406",
+        "district_code": "14"
+    },
+    {
+        "name": "Cascais",
+        "code": "1105",
+        "district_code": "11"
+    },
+    {
+        "name": "Castanheira de Pêra",
+        "code": "1007",
+        "district_code": "10"
+    },
+    {
+        "name": "Castelo Branco",
+        "code": "0502",
+        "district_code": "05"
+    },
+    {
+        "name": "Castelo de Paiva",
+        "code": "0106",
+        "district_code": "01"
+    },
+    {
+        "name": "Castelo de Vide",
+        "code": "1205",
+        "district_code": "12"
+    },
+    {
+        "name": "Castro Daire",
+        "code": "1803",
+        "district_code": "18"
+    },
+    {
+        "name": "Castro Marim",
+        "code": "0804",
+        "district_code": "08"
+    },
+    {
+        "name": "Castro Verde",
+        "code": "0206",
+        "district_code": "02"
+    },
+    {
+        "name": "Celorico da Beira",
+        "code": "0903",
+        "district_code": "09"
+    },
+    {
+        "name": "Celorico de Basto",
+        "code": "0305",
+        "district_code": "03"
+    },
+    {
+        "name": "Chamusca",
+        "code": "1407",
+        "district_code": "14"
+    },
+    {
+        "name": "Chaves",
+        "code": "1703",
+        "district_code": "17"
+    },
+    {
+        "name": "Cinfães",
+        "code": "1804",
+        "district_code": "18"
+    },
+    {
+        "name": "Coimbra",
+        "code": "0603",
+        "district_code": "06"
+    },
+    {
+        "name": "Condeixa-a-Nova",
+        "code": "0604",
+        "district_code": "06"
+    },
+    {
+        "name": "Constância",
+        "code": "1408",
+        "district_code": "14"
+    },
+    {
+        "name": "Coruche",
+        "code": "1409",
+        "district_code": "14"
+    },
+    {
+        "name": "Covilhã",
+        "code": "0503",
+        "district_code": "05"
+    },
+    {
+        "name": "Crato",
+        "code": "1206",
+        "district_code": "12"
+    },
+    {
+        "name": "Cuba",
+        "code": "0207",
+        "district_code": "02"
+    },
+    {
+        "name": "Elvas",
+        "code": "1207",
+        "district_code": "12"
+    },
+    {
+        "name": "Entroncamento",
+        "code": "1410",
+        "district_code": "14"
+    },
+    {
+        "name": "Espinho",
+        "code": "0107",
+        "district_code": "01"
+    },
+    {
+        "name": "Esposende",
+        "code": "0306",
+        "district_code": "03"
+    },
+    {
+        "name": "Estarreja",
+        "code": "0108",
+        "district_code": "01"
+    },
+    {
+        "name": "Estremoz",
+        "code": "0704",
+        "district_code": "07"
+    },
+    {
+        "name": "Évora",
+        "code": "0705",
+        "district_code": "07"
+    },
+    {
+        "name": "Fafe",
+        "code": "0307",
+        "district_code": "03"
+    },
+    {
+        "name": "Faro",
+        "code": "0805",
+        "district_code": "08"
+    },
+    {
+        "name": "Felgueiras",
+        "code": "1303",
+        "district_code": "13"
+    },
+    {
+        "name": "Ferreira do Alentejo",
+        "code": "0208",
+        "district_code": "02"
+    },
+    {
+        "name": "Ferreira do Zêzere",
+        "code": "1411",
+        "district_code": "14"
+    },
+    {
+        "name": "Figueira da Foz",
+        "code": "0605",
+        "district_code": "06"
+    },
+    {
+        "name": "Figueira de Castelo Rodrigo",
+        "code": "0904",
+        "district_code": "09"
+    },
+    {
+        "name": "Figueiró dos Vinhos",
+        "code": "1008",
+        "district_code": "10"
+    },
+    {
+        "name": "Fornos de Algodres",
+        "code": "0905",
+        "district_code": "09"
+    },
+    {
+        "name": "Freixo de Espada à Cinta",
+        "code": "0404",
+        "district_code": "04"
+    },
+    {
+        "name": "Fronteira",
+        "code": "1208",
+        "district_code": "12"
+    },
+    {
+        "name": "Fundão",
+        "code": "0504",
+        "district_code": "05"
+    },
+    {
+        "name": "Gavião",
+        "code": "1209",
+        "district_code": "12"
+    },
+    {
+        "name": "Góis",
+        "code": "0606",
+        "district_code": "06"
+    },
+    {
+        "name": "Golegã",
+        "code": "1412",
+        "district_code": "14"
+    },
+    {
+        "name": "Gondomar",
+        "code": "1304",
+        "district_code": "13"
+    },
+    {
+        "name": "Gouveia",
+        "code": "0906",
+        "district_code": "09"
+    },
+    {
+        "name": "Grândola",
+        "code": "1505",
+        "district_code": "15"
+    },
+    {
+        "name": "Guarda",
+        "code": "0907",
+        "district_code": "09"
+    },
+    {
+        "name": "Guimarães",
+        "code": "0308",
+        "district_code": "03"
+    },
+    {
+        "name": "Idanha-a-Nova",
+        "code": "0505",
+        "district_code": "05"
+    },
+    {
+        "name": "Ílhavo",
+        "code": "0110",
+        "district_code": "01"
+    },
+    {
+        "name": "Lagoa",
+        "code": "0806",
+        "district_code": "08"
+    },
+    {
+        "name": "Lagos",
+        "code": "0807",
+        "district_code": "08"
+    },
+    {
+        "name": "Lamego",
+        "code": "1805",
+        "district_code": "18"
+    },
+    {
+        "name": "Leiria",
+        "code": "1009",
+        "district_code": "10"
+    },
+    {
+        "name": "Lisboa",
+        "code": "1106",
+        "district_code": "11"
+    },
+    {
+        "name": "Loulé",
+        "code": "0808",
+        "district_code": "08"
+    },
+    {
+        "name": "Loures",
+        "code": "1107",
+        "district_code": "11"
+    },
+    {
+        "name": "Lourinhã",
+        "code": "1108",
+        "district_code": "11"
+    },
+    {
+        "name": "Lousã",
+        "code": "0607",
+        "district_code": "06"
+    },
+    {
+        "name": "Lousada",
+        "code": "1305",
+        "district_code": "13"
+    },
+    {
+        "name": "Mação",
+        "code": "1413",
+        "district_code": "14"
+    },
+    {
+        "name": "Macedo de Cavaleiros",
+        "code": "0405",
+        "district_code": "04"
+    },
+    {
+        "name": "Mafra",
+        "code": "1109",
+        "district_code": "11"
+    },
+    {
+        "name": "Maia",
+        "code": "1306",
+        "district_code": "13"
+    },
+    {
+        "name": "Mangualde",
+        "code": "1806",
+        "district_code": "18"
+    },
+    {
+        "name": "Manteigas",
+        "code": "0908",
+        "district_code": "09"
+    },
+    {
+        "name": "Marco de Canaveses",
+        "code": "1307",
+        "district_code": "13"
+    },
+    {
+        "name": "Marinha Grande",
+        "code": "1010",
+        "district_code": "10"
+    },
+    {
+        "name": "Marvão",
+        "code": "1210",
+        "district_code": "12"
+    },
+    {
+        "name": "Matosinhos",
+        "code": "1308",
+        "district_code": "13"
+    },
+    {
+        "name": "Mealhada",
+        "code": "0111",
+        "district_code": "01"
+    },
+    {
+        "name": "Mêda",
+        "code": "0909",
+        "district_code": "09"
+    },
+    {
+        "name": "Melgaço",
+        "code": "1603",
+        "district_code": "16"
+    },
+    {
+        "name": "Mértola",
+        "code": "0209",
+        "district_code": "02"
+    },
+    {
+        "name": "Mesão Frio",
+        "code": "1704",
+        "district_code": "17"
+    },
+    {
+        "name": "Mira",
+        "code": "0608",
+        "district_code": "06"
+    },
+    {
+        "name": "Miranda do Corvo",
+        "code": "0609",
+        "district_code": "06"
+    },
+    {
+        "name": "Miranda do Douro",
+        "code": "0406",
+        "district_code": "04"
+    },
+    {
+        "name": "Mirandela",
+        "code": "0407",
+        "district_code": "04"
+    },
+    {
+        "name": "Mogadouro",
+        "code": "0408",
+        "district_code": "04"
+    },
+    {
+        "name": "Moimenta da Beira",
+        "code": "1807",
+        "district_code": "18"
+    },
+    {
+        "name": "Moita",
+        "code": "1506",
+        "district_code": "15"
+    },
+    {
+        "name": "Monção",
+        "code": "1604",
+        "district_code": "16"
+    },
+    {
+        "name": "Monchique",
+        "code": "0809",
+        "district_code": "08"
+    },
+    {
+        "name": "Mondim de Basto",
+        "code": "1705",
+        "district_code": "17"
+    },
+    {
+        "name": "Monforte",
+        "code": "1211",
+        "district_code": "12"
+    },
+    {
+        "name": "Montalegre",
+        "code": "1706",
+        "district_code": "17"
+    },
+    {
+        "name": "Montemor-o-Novo",
+        "code": "0706",
+        "district_code": "07"
+    },
+    {
+        "name": "Montemor-o-Velho",
+        "code": "0610",
+        "district_code": "06"
+    },
+    {
+        "name": "Montijo",
+        "code": "1507",
+        "district_code": "15"
+    },
+    {
+        "name": "Mora",
+        "code": "0707",
+        "district_code": "07"
+    },
+    {
+        "name": "Mortágua",
+        "code": "1808",
+        "district_code": "18"
+    },
+    {
+        "name": "Moura",
+        "code": "0210",
+        "district_code": "02"
+    },
+    {
+        "name": "Mourão",
+        "code": "0708",
+        "district_code": "07"
+    },
+    {
+        "name": "Murça",
+        "code": "1707",
+        "district_code": "17"
+    },
+    {
+        "name": "Murtosa",
+        "code": "0112",
+        "district_code": "01"
+    },
+    {
+        "name": "Nazaré",
+        "code": "1011",
+        "district_code": "10"
+    },
+    {
+        "name": "Nelas",
+        "code": "1809",
+        "district_code": "18"
+    },
+    {
+        "name": "Nisa",
+        "code": "1212",
+        "district_code": "12"
+    },
+    {
+        "name": "Óbidos",
+        "code": "1012",
+        "district_code": "10"
+    },
+    {
+        "name": "Odemira",
+        "code": "0211",
+        "district_code": "02"
+    },
+    {
+        "name": "Odivelas",
+        "code": "1116",
+        "district_code": "11"
+    },
+    {
+        "name": "Oeiras",
+        "code": "1110",
+        "district_code": "11"
+    },
+    {
+        "name": "Oleiros",
+        "code": "0506",
+        "district_code": "05"
+    },
+    {
+        "name": "Olhão",
+        "code": "0810",
+        "district_code": "08"
+    },
+    {
+        "name": "Oliveira de Azeméis",
+        "code": "0113",
+        "district_code": "01"
+    },
+    {
+        "name": "Oliveira de Frades",
+        "code": "1810",
+        "district_code": "18"
+    },
+    {
+        "name": "Oliveira do Bairro",
+        "code": "0114",
+        "district_code": "01"
+    },
+    {
+        "name": "Oliveira do Hospital",
+        "code": "0611",
+        "district_code": "06"
+    },
+    {
+        "name": "Ourém",
+        "code": "1421",
+        "district_code": "14"
+    },
+    {
+        "name": "Ourique",
+        "code": "0212",
+        "district_code": "02"
+    },
+    {
+        "name": "Ovar",
+        "code": "0115",
+        "district_code": "01"
+    },
+    {
+        "name": "Paços de Ferreira",
+        "code": "1309",
+        "district_code": "13"
+    },
+    {
+        "name": "Palmela",
+        "code": "1508",
+        "district_code": "15"
+    },
+    {
+        "name": "Pampilhosa da Serra",
+        "code": "0612",
+        "district_code": "06"
+    },
+    {
+        "name": "Paredes",
+        "code": "1310",
+        "district_code": "13"
+    },
+    {
+        "name": "Paredes de Coura",
+        "code": "1605",
+        "district_code": "16"
+    },
+    {
+        "name": "Pedrógão Grande",
+        "code": "1013",
+        "district_code": "10"
+    },
+    {
+        "name": "Penacova",
+        "code": "0613",
+        "district_code": "06"
+    },
+    {
+        "name": "Penafiel",
+        "code": "1311",
+        "district_code": "13"
+    },
+    {
+        "name": "Penalva do Castelo",
+        "code": "1811",
+        "district_code": "18"
+    },
+    {
+        "name": "Penamacor",
+        "code": "0507",
+        "district_code": "05"
+    },
+    {
+        "name": "Penedono",
+        "code": "1812",
+        "district_code": "18"
+    },
+    {
+        "name": "Penela",
+        "code": "0614",
+        "district_code": "06"
+    },
+    {
+        "name": "Peniche",
+        "code": "1014",
+        "district_code": "10"
+    },
+    {
+        "name": "Peso da Régua",
+        "code": "1708",
+        "district_code": "17"
+    },
+    {
+        "name": "Pinhel",
+        "code": "0910",
+        "district_code": "09"
+    },
+    {
+        "name": "Pombal",
+        "code": "1015",
+        "district_code": "10"
+    },
+    {
+        "name": "Ponte da Barca",
+        "code": "1606",
+        "district_code": "16"
+    },
+    {
+        "name": "Ponte de Lima",
+        "code": "1607",
+        "district_code": "16"
+    },
+    {
+        "name": "Ponte de Sor",
+        "code": "1213",
+        "district_code": "12"
+    },
+    {
+        "name": "Portalegre",
+        "code": "1214",
+        "district_code": "12"
+    },
+    {
+        "name": "Portel",
+        "code": "0709",
+        "district_code": "07"
+    },
+    {
+        "name": "Portimão",
+        "code": "0811",
+        "district_code": "08"
+    },
+    {
+        "name": "Porto",
+        "code": "1312",
+        "district_code": "13"
+    },
+    {
+        "name": "Porto de Mós",
+        "code": "1016",
+        "district_code": "10"
+    },
+    {
+        "name": "Póvoa de Lanhoso",
+        "code": "0309",
+        "district_code": "03"
+    },
+    {
+        "name": "Póvoa de Varzim",
+        "code": "1313",
+        "district_code": "13"
+    },
+    {
+        "name": "Proença-a-Nova",
+        "code": "0508",
+        "district_code": "05"
+    },
+    {
+        "name": "Redondo",
+        "code": "0710",
+        "district_code": "07"
+    },
+    {
+        "name": "Reguengos de Monsaraz",
+        "code": "0711",
+        "district_code": "07"
+    },
+    {
+        "name": "Resende",
+        "code": "1813",
+        "district_code": "18"
+    },
+    {
+        "name": "Ribeira de Pena",
+        "code": "1709",
+        "district_code": "17"
+    },
+    {
+        "name": "Rio Maior",
+        "code": "1414",
+        "district_code": "14"
+    },
+    {
+        "name": "Sabrosa",
+        "code": "1710",
+        "district_code": "17"
+    },
+    {
+        "name": "Sabugal",
+        "code": "0911",
+        "district_code": "09"
+    },
+    {
+        "name": "Salvaterra de Magos",
+        "code": "1415",
+        "district_code": "14"
+    },
+    {
+        "name": "Santa Comba Dão",
+        "code": "1814",
+        "district_code": "18"
+    },
+    {
+        "name": "Santa Maria da Feira",
+        "code": "0109",
+        "district_code": "01"
+    },
+    {
+        "name": "Santa Marta de Penaguião",
+        "code": "1711",
+        "district_code": "17"
+    },
+    {
+        "name": "Santarém",
+        "code": "1416",
+        "district_code": "14"
+    },
+    {
+        "name": "Santiago do Cacém",
+        "code": "1509",
+        "district_code": "15"
+    },
+    {
+        "name": "Santo Tirso",
+        "code": "1314",
+        "district_code": "13"
+    },
+    {
+        "name": "São Brás de Alportel",
+        "code": "0812",
+        "district_code": "08"
+    },
+    {
+        "name": "São João da Madeira",
+        "code": "0116",
+        "district_code": "01"
+    },
+    {
+        "name": "São João da Pesqueira",
+        "code": "1815",
+        "district_code": "18"
+    },
+    {
+        "name": "São Pedro do Sul",
+        "code": "1816",
+        "district_code": "18"
+    },
+    {
+        "name": "Sardoal",
+        "code": "1417",
+        "district_code": "14"
+    },
+    {
+        "name": "Sátão",
+        "code": "1817",
+        "district_code": "18"
+    },
+    {
+        "name": "Seia",
+        "code": "0912",
+        "district_code": "09"
+    },
+    {
+        "name": "Seixal",
+        "code": "1510",
+        "district_code": "15"
+    },
+    {
+        "name": "Sernancelhe",
+        "code": "1818",
+        "district_code": "18"
+    },
+    {
+        "name": "Serpa",
+        "code": "0213",
+        "district_code": "02"
+    },
+    {
+        "name": "Sertã",
+        "code": "0509",
+        "district_code": "05"
+    },
+    {
+        "name": "Sesimbra",
+        "code": "1511",
+        "district_code": "15"
+    },
+    {
+        "name": "Setúbal",
+        "code": "1512",
+        "district_code": "15"
+    },
+    {
+        "name": "Sever do Vouga",
+        "code": "0117",
+        "district_code": "01"
+    },
+    {
+        "name": "Silves",
+        "code": "0813",
+        "district_code": "08"
+    },
+    {
+        "name": "Sines",
+        "code": "1513",
+        "district_code": "15"
+    },
+    {
+        "name": "Sintra",
+        "code": "1111",
+        "district_code": "11"
+    },
+    {
+        "name": "Sobral de Monte Agraço",
+        "code": "1112",
+        "district_code": "11"
+    },
+    {
+        "name": "Soure",
+        "code": "0615",
+        "district_code": "06"
+    },
+    {
+        "name": "Sousel",
+        "code": "1215",
+        "district_code": "12"
+    },
+    {
+        "name": "Tábua",
+        "code": "0616",
+        "district_code": "06"
+    },
+    {
+        "name": "Tabuaço",
+        "code": "1819",
+        "district_code": "18"
+    },
+    {
+        "name": "Tarouca",
+        "code": "1820",
+        "district_code": "18"
+    },
+    {
+        "name": "Tavira",
+        "code": "0814",
+        "district_code": "08"
+    },
+    {
+        "name": "Terras de Bouro",
+        "code": "0310",
+        "district_code": "03"
+    },
+    {
+        "name": "Tomar",
+        "code": "1418",
+        "district_code": "14"
+    },
+    {
+        "name": "Tondela",
+        "code": "1821",
+        "district_code": "18"
+    },
+    {
+        "name": "Torre de Moncorvo",
+        "code": "0409",
+        "district_code": "04"
+    },
+    {
+        "name": "Torres Novas",
+        "code": "1419",
+        "district_code": "14"
+    },
+    {
+        "name": "Torres Vedras",
+        "code": "1113",
+        "district_code": "11"
+    },
+    {
+        "name": "Trancoso",
+        "code": "0913",
+        "district_code": "09"
+    },
+    {
+        "name": "Trofa",
+        "code": "1318",
+        "district_code": "13"
+    },
+    {
+        "name": "Vagos",
+        "code": "0118",
+        "district_code": "01"
+    },
+    {
+        "name": "Vale de Cambra",
+        "code": "0119",
+        "district_code": "01"
+    },
+    {
+        "name": "Valença",
+        "code": "1608",
+        "district_code": "16"
+    },
+    {
+        "name": "Valongo",
+        "code": "1315",
+        "district_code": "13"
+    },
+    {
+        "name": "Valpaços",
+        "code": "1712",
+        "district_code": "17"
+    },
+    {
+        "name": "Vendas Novas",
+        "code": "0712",
+        "district_code": "07"
+    },
+    {
+        "name": "Viana do Alentejo",
+        "code": "0713",
+        "district_code": "07"
+    },
+    {
+        "name": "Viana do Castelo",
+        "code": "1609",
+        "district_code": "16"
+    },
+    {
+        "name": "Vidigueira",
+        "code": "0214",
+        "district_code": "02"
+    },
+    {
+        "name": "Vieira do Minho",
+        "code": "0311",
+        "district_code": "03"
+    },
+    {
+        "name": "Vila de Rei",
+        "code": "0510",
+        "district_code": "05"
+    },
+    {
+        "name": "Vila do Bispo",
+        "code": "0815",
+        "district_code": "08"
+    },
+    {
+        "name": "Vila do Conde",
+        "code": "1316",
+        "district_code": "13"
+    },
+    {
+        "name": "Vila Flor",
+        "code": "0410",
+        "district_code": "04"
+    },
+    {
+        "name": "Vila Franca de Xira",
+        "code": "1114",
+        "district_code": "11"
+    },
+    {
+        "name": "Vila Nova da Barquinha",
+        "code": "1420",
+        "district_code": "14"
+    },
+    {
+        "name": "Vila Nova de Cerveira",
+        "code": "1610",
+        "district_code": "16"
+    },
+    {
+        "name": "Vila Nova de Famalicão",
+        "code": "0312",
+        "district_code": "03"
+    },
+    {
+        "name": "Vila Nova de Foz Côa",
+        "code": "0914",
+        "district_code": "09"
+    },
+    {
+        "name": "Vila Nova de Gaia",
+        "code": "1317",
+        "district_code": "13"
+    },
+    {
+        "name": "Vila Nova de Paiva",
+        "code": "1822",
+        "district_code": "18"
+    },
+    {
+        "name": "Vila Nova de Poiares",
+        "code": "0617",
+        "district_code": "06"
+    },
+    {
+        "name": "Vila Pouca de Aguiar",
+        "code": "1713",
+        "district_code": "17"
+    },
+    {
+        "name": "Vila Real",
+        "code": "1714",
+        "district_code": "17"
+    },
+    {
+        "name": "Vila Real de Santo António",
+        "code": "0816",
+        "district_code": "08"
+    },
+    {
+        "name": "Vila Velha de Ródão",
+        "code": "0511",
+        "district_code": "05"
+    },
+    {
+        "name": "Vila Verde",
+        "code": "0313",
+        "district_code": "03"
+    },
+    {
+        "name": "Vila Viçosa",
+        "code": "0714",
+        "district_code": "07"
+    },
+    {
+        "name": "Vimioso",
+        "code": "0411",
+        "district_code": "04"
+    },
+    {
+        "name": "Vinhais",
+        "code": "0412",
+        "district_code": "04"
+    },
+    {
+        "name": "Viseu",
+        "code": "1823",
+        "district_code": "18"
+    },
+    {
+        "name": "Vizela",
+        "code": "0314",
+        "district_code": "03"
+    },
+    {
+        "name": "Vouzela",
+        "code": "1824",
+        "district_code": "18"
+    }
+]

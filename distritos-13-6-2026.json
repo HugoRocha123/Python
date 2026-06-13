@@ -1,0 +1,82 @@
+[
+    {
+        "name": "Aveiro",
+        "code": "01"
+    },
+    {
+        "name": "Beja",
+        "code": "02"
+    },
+    {
+        "name": "Braga",
+        "code": "03"
+    },
+    {
+        "name": "Bragança",
+        "code": "04"
+    },
+    {
+        "name": "Castelo Branco",
+        "code": "05"
+    },
+    {
+        "name": "Coimbra",
+        "code": "06"
+    },
+    {
+        "name": "Évora",
+        "code": "07"
+    },
+    {
+        "name": "Faro",
+        "code": "08"
+    },
+    {
+        "name": "Guarda",
+        "code": "09"
+    },
+    {
+        "name": "Leiria",
+        "code": "10"
+    },
+    {
+        "name": "Lisboa",
+        "code": "11"
+    },
+    {
+        "name": "Portalegre",
+        "code": "12"
+    },
+    {
+        "name": "Porto",
+        "code": "13"
+    },
+    {
+        "name": "Santarém",
+        "code": "14"
+    },
+    {
+        "name": "Setúbal",
+        "code": "15"
+    },
+    {
+        "name": "Viana do Castelo",
+        "code": "16"
+    },
+    {
+        "name": "Vila Real",
+        "code": "17"
+    },
+    {
+        "name": "Viseu",
+        "code": "18"
+    },
+    {
+        "name": "Região Autónoma da Madeira",
+        "code": "31"
+    },
+    {
+        "name": "Região Autónoma dos Açores",
+        "code": "32"
+    }
+]
