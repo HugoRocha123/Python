@@ -285,7 +285,6 @@ class CityContractFinderApp(QMainWindow):
                 str(contrato.get("procedure_type", "")),
                 str(contrato.get("contract_price", "")),
                 str(contrato.get("publication_date", "")),
-                str(contrato.get("district_code", "")),
             )
 
             for col_idx, text in enumerate(dados):
