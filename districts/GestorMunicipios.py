@@ -1,5 +1,5 @@
-from Python.districts.GestorArquivos import GestorArquivo 
-from Python.districts.GestorURL import GestorURL 
+from GestorArquivos import GestorArquivo 
+from GestorURL import GestorURL 
 class GestorMunicipios:
     def __init__(self, parametros=None):
         if parametros is None:
@@ -45,3 +45,9 @@ class GestorMunicipios:
                 municipio = municipios["name"]
                 l_m.append(municipio)
         return l_m
+    
+    def get_idmmunicipios(self, nome):
+        data = self.__arquivo.ler_arquivo()
+        for municipios in data:
+            if municipios["name"] == nome:
+                return municipios["code"]
