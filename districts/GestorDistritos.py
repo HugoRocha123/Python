@@ -1,5 +1,5 @@
-from Python.districts.GestorURL import GestorURL
-from Python.districts.GestorArquivos import GestorArquivo
+from GestorURL import GestorURL
+from GestorArquivos import GestorArquivo
 
 
 class GestorDistritos:
