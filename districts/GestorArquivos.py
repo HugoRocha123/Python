@@ -1,13 +1,13 @@
 import json
 import datetime
 from pathlib import Path
-#test
+
 
 class GestorArquivo:
     def __init__(self, documento: str):
         data = datetime.datetime.now()
         hoje = f"{data.day}-{data.month}-{data.year}"
-        self.__file = f"Trabalho distritos/{documento}-{hoje}.json"
+        self.__file = f"Dados Guardados/{documento}-{hoje}.json"
 
         path = Path(self.__file)
         path.parent.mkdir(parents=True, exist_ok=True)
