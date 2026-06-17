@@ -1,4 +1,10 @@
 import sys
+from datetime import datetime
+from collections import Counter
+from GestorDistritos import GestorDistritos
+from GestorMunicipios import GestorMunicipios
+from GestorContratos import GestorContratos
+
 from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
                                QHBoxLayout, QLabel, QComboBox, QPushButton,
                                QTableWidget, QTableWidgetItem, QHeaderView,
@@ -6,49 +12,62 @@ from PySide6.QtWidgets import (QApplication, QMainWindow, QWidget, QVBoxLayout,
 from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QColor
 
-from Python.districts.GestorDistritos import GestorDistritos
-from Python.districts.GestorMunicipios import GestorMunicipios
-from Python.districts.GestorContratos import GestorContratos
+
+def format_currency(value):
+    try:
+        return f"{float(value):,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
+    except (TypeError, ValueError):
+        return "0,00 €"
+
+
+def format_date(date_str):
+    try:
+        if not date_str:
+            return ""
+        dt = datetime.fromisoformat(str(date_str).replace("Z", "+00:00"))
+        return dt.strftime("%d/%m/%Y")
+    except Exception:
+        return str(date_str)
+
 
 class KPICard(QFrame):
-    """Custom dashboard metric layout card for financial KPI statistics."""
-
-    def __init__(self, title, value, footer=""):
+    def __init__(self, title, value, subtitle=""):
         super().__init__()
         self.setObjectName("KPICard")
 
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(16, 16, 16, 16)
+        layout.setSpacing(6)
+
+        self.lbl_title = QLabel(title)
+        self.lbl_title.setStyleSheet("color: #a1a1aa; font-size: 12px; font-weight: bold;")
+
+        self.lbl_value = QLabel(str(value))
+        self.lbl_value.setStyleSheet("color: #ffffff; font-size: 22px; font-weight: bold;")
+
+        self.lbl_subtitle = QLabel(subtitle)
+        self.lbl_subtitle.setStyleSheet("color: #71717a; font-size: 11px;")
+
+        layout.addWidget(self.lbl_title)
+        layout.addWidget(self.lbl_value)
+        layout.addWidget(self.lbl_subtitle)
+
         self.setStyleSheet("""
             QFrame#KPICard {
-                background-color: #1e1e24;
-                border: 1px solid #2d2d34;
-                border-radius: 8px;
-                padding: 12px;
+                background-color: #18181c;
+                border: 1px solid #252529;
+                border-radius: 10px;
             }
         """)
 
-        layout = QVBoxLayout(self)
-        layout.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.setSpacing(2)
+    def setValue(self, value):
+        self.lbl_value.setText(str(value))
 
-        lbl_title = QLabel(title.upper())
-        lbl_title.setFont(QFont("Segoe UI", 9, QFont.Weight.Bold))
-        lbl_title.setStyleSheet("color: #a1a1aa;")
-        lbl_title.setAlignment(Qt.AlignmentFlag.AlignCenter)
+    def setTitle(self, title):
+        self.lbl_title.setText(str(title))
 
-        lbl_val = QLabel(str(value))
-        lbl_val.setFont(QFont("Segoe UI", 22, QFont.Weight.Bold))
-        lbl_val.setStyleSheet("color: #ffffff; margin: 2px 0px;")
-        lbl_val.setAlignment(Qt.AlignmentFlag.AlignCenter)
-
-        layout.addWidget(lbl_title)
-        layout.addWidget(lbl_val)
-
-        if footer:
-            lbl_foot = QLabel(footer)
-            lbl_foot.setFont(QFont("Segoe UI", 9, QFont.Weight.Medium))
-            lbl_foot.setStyleSheet("color: #38bdf8;")  # Highlighted cyan text
-            lbl_foot.setAlignment(Qt.AlignmentFlag.AlignCenter)
-            layout.addWidget(lbl_foot)
+    def setSubtitle(self, subtitle):
+        self.lbl_subtitle.setText(str(subtitle))
 
 
 class CityContractFinderApp(QMainWindow):
@@ -58,17 +77,17 @@ class CityContractFinderApp(QMainWindow):
         self.resize(1100, 650)
         self.setMinimumSize(950, 580)
 
-        # Central Window Widget Setup
+        self.gestor_distritos = GestorDistritos()
+        self.gestor_municipios = GestorMunicipios()
+
         central_widget = QWidget()
         central_widget.setObjectName("CentralWidget")
         self.setCentralWidget(central_widget)
 
-        # Main Layout Setup
         workspace_layout = QVBoxLayout(central_widget)
         workspace_layout.setContentsMargins(30, 25, 30, 30)
         workspace_layout.setSpacing(18)
 
-        # Global Application Stylesheet (Dark Enterprise Palette)
         self.setStyleSheet("""
             QWidget#CentralWidget {
                 background-color: #121214;
@@ -101,7 +120,6 @@ class CityContractFinderApp(QMainWindow):
             }
             QPushButton#UpdateBtn:hover { background-color: #059669; }
 
-            /* Table Custom Styles */
             QTableWidget {
                 background-color: #18181c;
                 border: 1px solid #252529;
@@ -117,8 +135,6 @@ class CityContractFinderApp(QMainWindow):
                 font-weight: bold;
                 border-bottom: 1px solid #252529;
             }
-
-            /* Bottom Cards / Lists styling */
             QListWidget {
                 background-color: #18181c;
                 border: 1px solid #252529;
@@ -128,7 +144,6 @@ class CityContractFinderApp(QMainWindow):
             }
         """)
 
-        # --- TOP HEADER BAR ---
         top_bar = QHBoxLayout()
 
         app_logo = QLabel("🏢 City Contract Finder")
@@ -139,17 +154,14 @@ class CityContractFinderApp(QMainWindow):
         lbl_district = QLabel("District:")
         lbl_district.setStyleSheet("color: #a1a1aa;")
         self.combo_district = QComboBox()
-        dist = GestorDistritos()
-        self.combo_district.addItems(dist.get_listadistritos()) # TODO : adicionar distritos
         self.combo_district.setFixedWidth(160)
         self.combo_district.currentTextChanged.connect(self.update_city)
 
         lbl_city = QLabel("City:")
         lbl_city.setStyleSheet("color: #a1a1aa;")
         self.combo_city = QComboBox()
-        
         self.combo_city.setFixedWidth(140)
-        self.update_city()
+
         btn_update = QPushButton("UPDATE LOCATION")
         btn_update.setObjectName("UpdateBtn")
         btn_update.clicked.connect(self.update_contracts)
@@ -161,49 +173,44 @@ class CityContractFinderApp(QMainWindow):
         top_bar.addWidget(btn_update)
         workspace_layout.addLayout(top_bar)
 
-        # Table Header Section Label
-        lbl_table_header = QLabel("ACTIVE CONTRACTS IN LISBON (LISBON DISTRICT)") # TODO : texto depende do distrito seleccionado
-        lbl_table_header.setObjectName("SectionTitle")
-        workspace_layout.addWidget(lbl_table_header)
+        self.lbl_table_header = QLabel("ACTIVE CONTRACTS")
+        self.lbl_table_header.setObjectName("SectionTitle")
+        workspace_layout.addWidget(self.lbl_table_header)
 
-        # --- CONTRACT DATA GRID (QTableWidget) ---
         self.table_widget = QTableWidget()
-        self.table_widget.setColumnCount(6)
+        self.table_widget.setColumnCount(7)
         self.table_widget.setHorizontalHeaderLabels(
-            ["Contract ID", "Vendor", "Status", "Description", "Value (€)", "End Date"])
-        self.table_widget.setSelectionBehavior(QAbstractItemView.SelectionBehavior.SelectRows)
-        self.table_widget.setEditTriggers(QAbstractItemView.EditTrigger.NoEditTriggers)
+            ["Contract ID", "Object", "Procedure Type", "Value (€)", "Publication Date", "District Code", "Municipality Code"]
+        )
+        self.table_widget.setSelectionBehavior(QTableWidget.SelectionBehavior.SelectRows)
+        self.table_widget.setEditTriggers(QTableWidget.EditTrigger.NoEditTriggers)
 
-        # Fit header sizes dynamically
         header = self.table_widget.horizontalHeader()
         header.setSectionResizeMode(0, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(1, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(1, QHeaderView.ResizeMode.Stretch)
         header.setSectionResizeMode(2, QHeaderView.ResizeMode.ResizeToContents)
-        header.setSectionResizeMode(3, QHeaderView.ResizeMode.Stretch)
+        header.setSectionResizeMode(3, QHeaderView.ResizeMode.ResizeToContents)
         header.setSectionResizeMode(4, QHeaderView.ResizeMode.ResizeToContents)
         header.setSectionResizeMode(5, QHeaderView.ResizeMode.ResizeToContents)
+        header.setSectionResizeMode(6, QHeaderView.ResizeMode.ResizeToContents)
 
         workspace_layout.addWidget(self.table_widget)
 
-        # --- BOTTOM OVERVIEW REGION ---
         bottom_row = QHBoxLayout()
         bottom_row.setSpacing(20)
 
-        # Column Layout 1: KPI Block Matrix Cards
         kpi_grid_layout = QVBoxLayout()
         kpi_grid_layout.setSpacing(12)
 
-        # TODO : actualizar kpi
         row_kpi_1 = QHBoxLayout()
-        self.card_total = KPICard("Total Active Contracts", "156", "Active Tenders")
-        self.card_value = KPICard("Total Contract Value", "45,800,000 €", "Allocated Budget")
+        self.card_total = KPICard("Total Active Contracts", "0", "Loaded from data")
+        self.card_value = KPICard("Total Contract Value", "0,00 €", "Loaded from data")
         row_kpi_1.addWidget(self.card_total)
         row_kpi_1.addWidget(self.card_value)
 
-        # TODO : actualizar KPI
         row_kpi_2 = QHBoxLayout()
-        self.card_largest = KPICard("Largest Active Contract", "5,200,000 €", "Public Works Dept")
-        self.card_avg = KPICard("Avg Contract Value", "293,589 €", "Standard Distribution")
+        self.card_largest = KPICard("Largest Active Contract", "0,00 €", "Loaded from data")
+        self.card_avg = KPICard("Avg Contract Value", "0,00 €", "Loaded from data")
         row_kpi_2.addWidget(self.card_largest)
         row_kpi_2.addWidget(self.card_avg)
 
@@ -211,106 +218,189 @@ class CityContractFinderApp(QMainWindow):
         kpi_grid_layout.addLayout(row_kpi_2)
         bottom_row.addLayout(kpi_grid_layout, stretch=4)
 
-        # Column Layout 2: Department Breakdown Breakdown Display
         dept_container = QVBoxLayout()
-        lbl_dept_title = QLabel("DEPARTMENT ALLOCATION")
+        lbl_dept_title = QLabel("PROCEDURE TYPE DISTRIBUTION")
         lbl_dept_title.setObjectName("SectionTitle")
 
         self.dept_feed = QListWidget()
-        # TODO : actualizar as percentagens
-        self.dept_feed.addItems([
-            "🏗️ Public Works & Infrastructure ────────── 40%",
-            "🚌 Transportation & Transit ─────────────── 20%",
-            "🧹 Sanitation & Waste Management ────────── 20%",
-            "🌳 Parks & Green Spaces ────────────────── 10%",
-            "🛡️ Public Safety & Security ───────────────── 6%",
-            "📁 Administration & Tech Support ──────────── 4%"
-        ])
+        self.dept_feed.addItem("Loading data...")
+
         dept_container.addWidget(lbl_dept_title)
         dept_container.addWidget(self.dept_feed)
         bottom_row.addLayout(dept_container, stretch=3)
 
-        # Column Layout 3: Recent Awards Ticker Timeline Feed
         recent_container = QVBoxLayout()
         lbl_recent_title = QLabel("RECENTLY AWARDED CONTRACTS")
         lbl_recent_title.setObjectName("SectionTitle")
 
         self.recent_feed = QListWidget()
-        # TODO :
-        self.recent_feed.addItems([
-            "✨ [12/01/2026] Acme Paving ─ Resurfacing project",
-            "✨ [08/01/2026] Vertex Tech ─ Network upgrade",
-            "✨ [03/01/2026] GreenScape ─ Public square garden",
-            "✨ [22/12/2025] SafeRoute Inc ─ Smart light grid"
-        ])
+        self.recent_feed.addItem("Loading data...")
+
         recent_container.addWidget(lbl_recent_title)
         recent_container.addWidget(self.recent_feed)
         bottom_row.addLayout(recent_container, stretch=3)
 
         workspace_layout.addLayout(bottom_row)
 
-        # Initialize Sample Mock Data rows
+        self.load_districts()
+        self.update_city()
+        self.combo_city.currentTextChanged.connect(self.update_contracts)
         self.update_contracts()
 
-    def update_contracts(self):
-        mun = GestorMunicipios()
-        id_municipio = mun.get_listamunicipios(self.combo_city.currentText())
-        contratos = GestorContratos(id_municipio)
+    def load_districts(self):
+        self.combo_district.blockSignals(True)
+        self.combo_district.clear()
 
+        self.combo_district.addItem("All Districts", None)
+
+        if hasattr(self.gestor_distritos, "obter_distritos"):
+            distritos = self.gestor_distritos.obter_distritos()
+            for d in distritos:
+                if isinstance(d, dict):
+                    self.combo_district.addItem(d.get("nome", ""), d.get("id"))
+                else:
+                    self.combo_district.addItem(str(d), str(d))
+        elif hasattr(self.gestor_distritos, "get_listadistritos"):
+            distritos = self.gestor_distritos.get_listadistritos()
+            for d in distritos:
+                self.combo_district.addItem(str(d), str(d))
+
+        self.combo_district.blockSignals(False)
+
+    def update_city(self):
         
-        lista_contratos = contratos.obter_contratos()
-        """Loads mockup row indices inside the dataset tables frame."""
-        print("Update Contracts")
-        # TODO:
-        
-        """mock_contracts = [(
-            ("0015", "Acme Paving Ltd.", "In Progress", "Avenida da Liberdade Road Resurfacing", "1,250,000",
-             "11/30/2026"),
-            ("0013", "Sintra Builders S.A.", "In Progress", "Structural Retrofitting Civic Center", "650,000",
-             "08/15/2026"),
-            ("0022", "Vertex Systems", "Under Review", "Municipal Cloud Infrastructure Migrations", "2,100,000",
-             "03/01/2027"),
-            ("0023", "EcoClean Solutions", "In Progress", "District Fleet Maintenance & Waste Logistics", "1,450,000",
-             "12/31/2026"),
-            ("0014", "Logilux Security", "Completed", "CCTV Monitoring System Expansion Phase II", "420,000",
-             "05/01/2026"))
-        ]"""
+        district_name = self.combo_district.currentText()
+        district_code = self.gestor_distritos.get_iddistrito(district_name)
+        if hasattr(self.gestor_distritos, "get_iddistrito"):
+            district_code = self.gestor_distritos.get_iddistrito(district_name) or district_code
+
+        self.combo_city.blockSignals(True)
+        self.combo_city.clear()
+        self.combo_city.addItem("All Cities", None)
+
+        municipios = []
+        if district_code:
+            if hasattr(self.gestor_municipios, "obter_municipios"):
+                municipios = self.gestor_municipios.obter_municipios(district_code)
+            elif hasattr(self.gestor_municipios, "get_listamunicipios"):
+                municipios = self.gestor_municipios.get_listamunicipios(district_code)
+
+        if municipios:
+            for m in municipios:
+                if isinstance(m, dict):
+                    self.combo_city.addItem(m.get("nome", ""), m.get("id"))
+                else:
+                    self.combo_city.addItem(str(m), str(m))
+
+        self.combo_city.blockSignals(False)
+
+        if self.combo_city.count() > 0:
+            self.combo_city.setCurrentIndex(0)
+
+    def update_contracts(self):
+        district_name = self.combo_district.currentText()
+        city_name = self.combo_city.currentText()
+
+        district_code = self.gestor_distritos.get_iddistrito(district_name)
+        municipality_code =  self.gestor_municipios.get_idmmunicipios(city_name)
+
+        print("=== DEBUG ===")
+        print("district_name:", district_name)
+        print("city_name:", city_name)
+        print("district_code:", district_code)
+        print("municipality_code:", municipality_code)
+
+        contratos = GestorContratos(municipality_code)
+        lista_contratos = contratos.obter_contratos(20)
+
+        print("contratos recebidos da API:", len(lista_contratos))
 
         self.table_widget.setRowCount(len(lista_contratos))
 
+        total_value = 0.0
+        largest_value = 0.0
+
         for row_idx, contrato in enumerate(lista_contratos):
+            contract_id = str(contrato.get("id", ""))
+            obj = str(contrato.get("object", ""))
+            procedure_type = str(contrato.get("procedure_type", ""))
+            contract_price = contrato.get("contract_price", 0)
+            publication_date = format_date(contrato.get("publication_date", ""))
+            district_code_txt = str(contrato.get("district_code", ""))
+            municipality_code_txt = str(contrato.get("municipality_code", ""))
+
+            try:
+                price_value = float(contract_price or 0)
+            except (TypeError, ValueError):
+                price_value = 0.0
+
+            total_value += price_value
+            largest_value = max(largest_value, price_value)
+
             dados = (
-                str(contrato.get("id", "")),
-                str(contrato.get("object", "")),
-                str(contrato.get("procedure_type", "")),
-                str(contrato.get("contract_price", "")),
-                str(contrato.get("publication_date", "")),
+                contract_id,
+                obj,
+                procedure_type,
+                format_currency(contract_price),
+                publication_date,
+                district_code_txt,
+                municipality_code_txt,
             )
 
             for col_idx, text in enumerate(dados):
                 item = QTableWidgetItem(text)
-
-                if col_idx == 2:
-                    if "In Progress" in text:
-                        item.setForeground(QColor("#34d399"))
-                    elif "Under Review" in text:
-                        item.setForeground(QColor("#fbbf24"))
-                    else:
-                        item.setForeground(QColor("#a1a1aa"))
-
-                elif col_idx == 3:
+                if col_idx == 3:
                     item.setTextAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignVCenter)
-
+                    item.setForeground(QColor("#34d399"))
                 self.table_widget.setItem(row_idx, col_idx, item)
 
-    def update_city(self):
-        mun = GestorMunicipios()
-        dist = GestorDistritos()
-        codigo_distrito = dist.get_iddistrito(self.combo_district.currentText())
-        print("Update Cities")
-        self.combo_city.clear()
-        self.combo_city.addItems(mun.get_listamunicipios(codigo_distrito)) # TODO : seleccionar cidade correcta
-        pass
+        total_contracts = len(lista_contratos)
+        avg_value = total_value / total_contracts if total_contracts else 0.0
+
+        self.card_total.setValue(str(total_contracts))
+        self.card_value.setValue(format_currency(total_value))
+        self.card_largest.setValue(format_currency(largest_value))
+        self.card_avg.setValue(format_currency(avg_value))
+
+        if city_name and city_name != "All Cities":
+            self.lbl_table_header.setText(
+                f"ACTIVE CONTRACTS IN {city_name.upper()} ({district_name.upper()} DISTRICT)"
+            )
+        elif district_name and district_name != "All Districts":
+            self.lbl_table_header.setText(
+                f"ACTIVE CONTRACTS IN {district_name.upper()} DISTRICT"
+            )
+        else:
+            self.lbl_table_header.setText("ACTIVE CONTRACTS")
+
+        self.dept_feed.clear()
+        if total_contracts:
+            counts = Counter(str(c.get("procedure_type", "Unknown")) for c in lista_contratos)
+            for procedure_type, count in counts.most_common():
+                percent = (count / total_contracts) * 100
+                self.dept_feed.addItem(f"📄 {procedure_type} ────────── {percent:.0f}%")
+        else:
+            self.dept_feed.addItem("No data available")
+
+        self.recent_feed.clear()
+        if lista_contratos:
+            recentes = sorted(
+                lista_contratos,
+                key=lambda x: str(x.get("publication_date", "")),
+                reverse=True
+            )[:5]
+
+            for contrato in recentes:
+                date_txt = format_date(contrato.get("publication_date", ""))
+                obj_txt = str(contrato.get("object", ""))
+                if len(obj_txt) > 60:
+                    obj_txt = obj_txt[:57] + "..."
+                self.recent_feed.addItem(f"✨ [{date_txt}] {obj_txt}")
+        else:
+            self.recent_feed.addItem("No recent contracts")
+
+
+
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     app.setFont(QFont("Segoe UI", 10))
