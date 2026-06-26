@@ -13,23 +13,6 @@ from PySide6.QtCore import Qt
 from PySide6.QtGui import QFont, QColor
 
 
-def format_currency(value):
-    try:
-        return f"{float(value):,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
-    except (TypeError, ValueError):
-        return "0,00 €"
-
-
-def format_date(date_str):
-    try:
-        if not date_str:
-            return ""
-        dt = datetime.fromisoformat(str(date_str).replace("Z", "+00:00"))
-        return dt.strftime("%d/%m/%Y")
-    except Exception:
-        return str(date_str)
-
-
 class KPICard(QFrame):
     def __init__(self, title, value, subtitle=""):
         super().__init__()
@@ -247,6 +230,23 @@ class CityContractFinderApp(QMainWindow):
         self.combo_city.currentTextChanged.connect(self.update_contracts)
         self.update_contracts()
 
+    def format_currency(value):
+        try:
+            return f"{float(value):,.2f} €".replace(",", "X").replace(".", ",").replace("X", ".")
+        except (TypeError, ValueError):
+            return "0,00 €"
+
+
+    def format_date(date_str):
+        try:
+            if not date_str:
+                return ""
+            dt = datetime.fromisoformat(str(date_str).replace("Z", "+00:00"))
+            return dt.strftime("%d/%m/%Y")
+        except Exception:
+            return str(date_str)
+
+
     def load_districts(self):
         self.combo_district.blockSignals(True)
         self.combo_district.clear()
@@ -325,7 +325,7 @@ class CityContractFinderApp(QMainWindow):
             obj = str(contrato.get("object", ""))
             procedure_type = str(contrato.get("procedure_type", ""))
             contract_price = contrato.get("contract_price", 0)
-            publication_date = format_date(contrato.get("publication_date", ""))
+            publication_date = self.format_date(contrato.get("publication_date", ""))
             district_code_txt = str(contrato.get("district_code", ""))
             municipality_code_txt = str(contrato.get("municipality_code", ""))
 
@@ -341,7 +341,7 @@ class CityContractFinderApp(QMainWindow):
                 contract_id,
                 obj,
                 procedure_type,
-                format_currency(contract_price),
+                self.format_currency(contract_price),
                 publication_date,
                 district_code_txt,
                 municipality_code_txt,
@@ -358,9 +358,9 @@ class CityContractFinderApp(QMainWindow):
         avg_value = total_value / total_contracts if total_contracts else 0.0
 
         self.card_total.setValue(str(total_contracts))
-        self.card_value.setValue(format_currency(total_value))
-        self.card_largest.setValue(format_currency(largest_value))
-        self.card_avg.setValue(format_currency(avg_value))
+        self.card_value.setValue(self.format_currency(total_value))
+        self.card_largest.setValue(self.format_currency(largest_value))
+        self.card_avg.setValue(self.format_currency(avg_value))
 
         if city_name and city_name != "All Cities":
             self.lbl_table_header.setText(
@@ -391,7 +391,7 @@ class CityContractFinderApp(QMainWindow):
             )[:5]
 
             for contrato in recentes:
-                date_txt = format_date(contrato.get("publication_date", ""))
+                date_txt = self.format_date(contrato.get("publication_date", ""))
                 obj_txt = str(contrato.get("object", ""))
                 if len(obj_txt) > 60:
                     obj_txt = obj_txt[:57] + "..."
